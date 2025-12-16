@@ -10,8 +10,13 @@ const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm'; // Votre clé publique
 const EMAILJS_SERVICE_ID = 'service_zqy6okk'; // Votre ID de service
 const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
 
-// Initialiser EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
+// Initialiser EmailJS une fois qu'il est chargé
+if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    console.log('✅ EmailJS initialisé');
+} else {
+    console.warn('⚠️ EmailJS n\'est pas chargé encore');
+}
 
 // ==========================================
 // FORMULAIRE DE CONTACT
@@ -25,6 +30,26 @@ if (contactForm) {
         e.preventDefault();
         
         console.log('📧 Tentative d\'envoi du formulaire...');
+        
+        // Vérifier que EmailJS est chargé
+        if (typeof emailjs === 'undefined') {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '❌ EmailJS n\'est pas chargé. Veuillez rafraîchir la page.';
+            console.error('❌ EmailJS n\'est pas défini');
+            return;
+        }
+        
+        // Initialiser EmailJS si ce n'est pas fait
+        if (!emailjs.__initialized) {
+            try {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                emailjs.__initialized = true;
+                console.log('✅ EmailJS initialisé via le formulaire');
+            } catch (err) {
+                console.error('❌ Erreur lors de l\'initialisation:', err);
+            }
+        }
+        
         console.log('Public Key:', EMAILJS_PUBLIC_KEY);
         console.log('Service ID:', EMAILJS_SERVICE_ID);
         console.log('Template ID:', EMAILJS_TEMPLATE_ID);
