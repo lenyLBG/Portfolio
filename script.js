@@ -24,12 +24,18 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
+        console.log('📧 Tentative d\'envoi du formulaire...');
+        console.log('Public Key:', EMAILJS_PUBLIC_KEY);
+        console.log('Service ID:', EMAILJS_SERVICE_ID);
+        console.log('Template ID:', EMAILJS_TEMPLATE_ID);
+        
         // Vérifier que les clés sont configurées
         if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY' || 
             EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
             EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
             formStatus.className = 'form-status error';
             formStatus.textContent = '⚠️ EmailJS non configuré. Consultez le fichier script.js pour les instructions.';
+            console.error('❌ EmailJS non configuré correctement');
             return;
         }
         
@@ -39,11 +45,15 @@ if (contactForm) {
         submitBtn.disabled = true;
         
         try {
+            console.log('📤 Envoi via EmailJS...');
+            
             const response = await emailjs.sendForm(
                 EMAILJS_SERVICE_ID,
                 EMAILJS_TEMPLATE_ID,
                 contactForm
             );
+            
+            console.log('✅ Réponse EmailJS:', response);
             
             if (response.status === 200) {
                 // Succès
@@ -52,15 +62,31 @@ if (contactForm) {
                 contactForm.reset();
                 submitBtn.disabled = false;
                 
+                console.log('✅ Email envoyé avec succès!');
+                
                 // Masquer le message après 5 secondes
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                 }, 5000);
+            } else {
+                throw new Error('Statut de réponse non 200: ' + response.status);
             }
         } catch (error) {
-            console.error('Erreur:', error);
+            console.error('❌ Erreur lors de l\'envoi:', error);
+            console.error('Message d\'erreur:', error.message);
+            console.error('Stack:', error.stack);
+            
             formStatus.className = 'form-status error';
-            formStatus.textContent = '❌ Erreur lors de l\'envoi. Veuillez réessayer.';
+            
+            // Message d'erreur plus détaillé
+            if (error.message.includes('CORS')) {
+                formStatus.textContent = '❌ Erreur CORS. Essayez d\'actualiser la page et réessayez.';
+            } else if (error.message.includes('Network')) {
+                formStatus.textContent = '❌ Erreur réseau. Vérifiez votre connexion.';
+            } else {
+                formStatus.textContent = '❌ Erreur: ' + error.message.substring(0, 50);
+            }
+            
             submitBtn.disabled = false;
         }
     });
