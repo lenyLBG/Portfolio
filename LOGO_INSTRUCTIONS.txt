@@ -1,0 +1,20 @@
+<!-- 
+LOGO.PNG - À REMPLACER
+
+Pour créer votre logo:
+1. Allez sur https://favicon-generator.org/
+2. Créez un logo 512x512px avec votre design
+3. Téléchargez logo.png
+4. Placez-le à la racine du portfolio
+5. Commitez et poussez sur GitHub
+
+RECOMMANDATIONS:
+- Fond transparent ou vos couleurs (#52F5EB, #000F26, #75D8FF)
+- Au minimum 512x512px
+- Format PNG
+- Doit être reconnaissable en petit (favicon)
+
+LE HTML CHERCHE:
+- logo.png dans la racine du portfolio
+- Utilisé comme favicon et apple-touch-icon
+-->

@@ -10,7 +10,7 @@ Disallow: /admin
 Disallow: /private
 
 # Sitemap
-Sitemap: https://lenyleborgne.dev/sitemap.xml
+Sitemap: https://lenyleborgne.com/sitemap.xml
 
 # Crawl delay
 Crawl-delay: 0
