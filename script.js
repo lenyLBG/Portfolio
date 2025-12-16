@@ -1,5 +1,25 @@
 // ==========================================
-// FORMULAIRE DE CONTACT (FORMSPREE)
+// INITIALISATION EMAILJS
+// ==========================================
+// 1. Créez un compte gratuit sur https://www.emailjs.com/
+// 2. Remplacez 'YOUR_PUBLIC_KEY' par votre clé publique EmailJS
+// 3. Remplacez 'YOUR_SERVICE_ID' par votre ID de service
+// 4. Remplacez 'YOUR_TEMPLATE_ID' par votre ID de template
+
+const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm'; // Votre clé publique
+const EMAILJS_SERVICE_ID = 'service_zqy6okk'; // Votre ID de service
+const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
+
+// Initialiser EmailJS une fois qu'il est chargé
+if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    console.log('✅ EmailJS initialisé');
+} else {
+    console.warn('⚠️ EmailJS n\'est pas chargé encore');
+}
+
+// ==========================================
+// FORMULAIRE DE CONTACT
 // ==========================================
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
@@ -9,7 +29,40 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        console.log('📧 Envoi du formulaire via Formspree...');
+        console.log('📧 Tentative d\'envoi du formulaire...');
+        
+        // Vérifier que EmailJS est chargé
+        if (typeof emailjs === 'undefined') {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '❌ EmailJS n\'est pas chargé. Veuillez rafraîchir la page.';
+            console.error('❌ EmailJS n\'est pas défini');
+            return;
+        }
+        
+        // Initialiser EmailJS si ce n'est pas fait
+        if (!emailjs.__initialized) {
+            try {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                emailjs.__initialized = true;
+                console.log('✅ EmailJS initialisé via le formulaire');
+            } catch (err) {
+                console.error('❌ Erreur lors de l\'initialisation:', err);
+            }
+        }
+        
+        console.log('Public Key:', EMAILJS_PUBLIC_KEY);
+        console.log('Service ID:', EMAILJS_SERVICE_ID);
+        console.log('Template ID:', EMAILJS_TEMPLATE_ID);
+        
+        // Vérifier que les clés sont configurées
+        if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY' || 
+            EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
+            EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '⚠️ EmailJS non configuré. Consultez le fichier script.js pour les instructions.';
+            console.error('❌ EmailJS non configuré correctement');
+            return;
+        }
         
         // Afficher le statut de chargement
         formStatus.className = 'form-status loading';
@@ -17,19 +70,17 @@ if (contactForm) {
         submitBtn.disabled = true;
         
         try {
-            const formData = new FormData(contactForm);
+            console.log('📤 Envoi via EmailJS...');
             
-            const response = await fetch('https://formspree.io/f/xyzgvwro', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
+            const response = await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                contactForm
+            );
             
-            console.log('Réponse status:', response.status);
+            console.log('✅ Réponse EmailJS:', response);
             
-            if (response.ok) {
+            if (response.status === 200) {
                 // Succès
                 formStatus.className = 'form-status success';
                 formStatus.textContent = '✅ Message envoyé avec succès! Je vous répondrai bientôt.';
@@ -43,22 +94,28 @@ if (contactForm) {
                     formStatus.style.display = 'none';
                 }, 5000);
             } else {
-                throw new Error('Erreur de réponse du serveur');
+                throw new Error('Statut de réponse non 200: ' + response.status);
             }
         } catch (error) {
             console.error('❌ Erreur lors de l\'envoi:', error);
+            console.error('Message d\'erreur:', error.message);
+            console.error('Stack:', error.stack);
             
             formStatus.className = 'form-status error';
-            formStatus.textContent = '❌ Erreur lors de l\'envoi. Veuillez réessayer.';
+            
+            // Message d'erreur plus détaillé
+            if (error.message.includes('CORS')) {
+                formStatus.textContent = '❌ Erreur CORS. Essayez d\'actualiser la page et réessayez.';
+            } else if (error.message.includes('Network')) {
+                formStatus.textContent = '❌ Erreur réseau. Vérifiez votre connexion.';
+            } else {
+                formStatus.textContent = '❌ Erreur: ' + error.message.substring(0, 50);
+            }
+            
             submitBtn.disabled = false;
         }
     });
 }
-
-// ==========================================
-// INITIALISATION EMAILJS (ANCIENNE VERSION - NON UTILISÉE)
-// ==========================================
-// Cette section n'est plus nécessaire avec Formspree
 
 // ==========================================
 // NAVIGATION MOBILE
