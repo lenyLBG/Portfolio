@@ -38,7 +38,19 @@ if (contactForm) {
                 body: JSON.stringify(data)
             });
             
+            console.log('Response status:', response.status);
+            console.log('Response headers:', response.headers);
+            
+            // Vérifier si la réponse est du JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                console.error('❌ Réponse non-JSON:', text);
+                throw new Error('Serveur a retourné une réponse invalide');
+            }
+            
             const result = await response.json();
+            console.log('Result:', result);
             
             if (response.ok && result.success) {
                 console.log('✅ Email envoyé avec succès');

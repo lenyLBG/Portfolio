@@ -11,6 +11,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route de test
+app.get('/', (req, res) => {
+    res.json({ message: '✅ Serveur prêt', status: 'running' });
+});
+
 // Configuration de l'email
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -20,12 +25,24 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// Vérifier la connexion au démarrage
+transporter.verify((error, success) => {
+    if (error) {
+        console.error('❌ Erreur configuration email:', error.message);
+    } else {
+        console.log('✅ Email configuré correctement');
+    }
+});
+
 // Route pour envoyer un email
 app.post('/api/send-email', async (req, res) => {
+    console.log('📧 Requête reçue:', req.body);
+    
     const { user_name, user_email, subject, message } = req.body;
 
     // Validation
     if (!user_name || !user_email || !subject || !message) {
+        console.error('❌ Champs manquants');
         return res.status(400).json({ 
             success: false, 
             error: 'Tous les champs sont requis' 
@@ -33,6 +50,8 @@ app.post('/api/send-email', async (req, res) => {
     }
 
     try {
+        console.log('📤 Envoi de l\'email...');
+        
         // Email à vous
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
@@ -61,13 +80,15 @@ app.post('/api/send-email', async (req, res) => {
             `
         });
 
+        console.log('✅ Emails envoyés avec succès');
         res.json({ 
             success: true, 
             message: 'Email envoyé avec succès' 
         });
 
     } catch (error) {
-        console.error('Erreur:', error);
+        console.error('❌ Erreur lors de l\'envoi:', error.message);
+        console.error('Stack:', error.stack);
         res.status(500).json({ 
             success: false, 
             error: error.message 
@@ -75,7 +96,24 @@ app.post('/api/send-email', async (req, res) => {
     }
 });
 
+// Gestion des erreurs 404
+app.use((req, res) => {
+    console.log('⚠️ Route non trouvée:', req.path);
+    res.status(404).json({ error: 'Route non trouvée' });
+});
+
+// Gestion globale des erreurs
+app.use((err, req, res, next) => {
+    console.error('❌ Erreur serveur:', err.message);
+    res.status(500).json({ 
+        success: false,
+        error: err.message 
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`✅ Serveur démarré sur le port ${PORT}`);
+    console.log(`📧 Email: ${process.env.EMAIL_USER}`);
+    console.log(`🌍 URL: http://localhost:${PORT}`);
 });
