@@ -1,98 +1,18 @@
 // ==========================================
-// INITIALISATION EMAILJS - Chargement Dynamique
-// ==========================================
-const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm'; // Votre clé publique
-const EMAILJS_SERVICE_ID = 'service_zqy6okk'; // Votre ID de service
-const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
-
-let emailjsLoaded = false;
-
-// Liste des CDNs à essayer
-const CDN_URLS = [
-    'https://unpkg.com/@emailjs/browser@4/dist/index.min.js',
-    'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js',
-    'https://emailjs.com/dist/email.min.js'
-];
-
-// Charger EmailJS dynamiquement avec fallback CDN
-function loadEmailJS() {
-    return new Promise((resolve) => {
-        if (typeof emailjs !== 'undefined') {
-            console.log('✅ EmailJS déjà chargé');
-            emailjsLoaded = true;
-            try {
-                emailjs.init(EMAILJS_PUBLIC_KEY);
-                console.log('✅ EmailJS initialisé');
-            } catch (e) {
-                console.error('Erreur init:', e);
-            }
-            resolve(true);
-            return;
-        }
-
-        function tryNextCDN(cdnIndex) {
-            if (cdnIndex >= CDN_URLS.length) {
-                console.error('❌ Impossible de charger EmailJS depuis tous les CDNs');
-                resolve(false);
-                return;
-            }
-
-            const cdnUrl = CDN_URLS[cdnIndex];
-            console.log(`📥 Essai CDN ${cdnIndex + 1}/${CDN_URLS.length}: ${cdnUrl}`);
-            
-            const script = document.createElement('script');
-            script.src = cdnUrl;
-            script.async = true;
-            
-            script.onload = () => {
-                console.log(`✅ EmailJS chargé depuis: ${cdnUrl}`);
-                emailjsLoaded = true;
-                try {
-                    emailjs.init(EMAILJS_PUBLIC_KEY);
-                    console.log('✅ EmailJS initialisé');
-                } catch (error) {
-                    console.error('❌ Erreur initialisation:', error);
-                }
-                resolve(true);
-            };
-            
-            script.onerror = () => {
-                console.warn(`⚠️ CDN ${cdnIndex + 1} échoué, essai suivant...`);
-                // Retirer le script en erreur
-                document.head.removeChild(script);
-                // Essayer le CDN suivant
-                tryNextCDN(cdnIndex + 1);
-            };
-            
-            document.head.appendChild(script);
-        }
-
-        // Commencer par le premier CDN
-        tryNextCDN(0);
-    });
-}
-
-// Charger EmailJS au démarrage
-loadEmailJS().then(success => {
-    if (success) {
-        console.log('📧 EmailJS prêt à être utilisé');
-    } else {
-        console.error('❌ EmailJS n\'a pas pu être chargé');
-    }
-});
-
-// ==========================================
-// FORMULAIRE DE CONTACT
+// FORMULAIRE DE CONTACT - Backend
 // ==========================================
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
 
+// URL de votre backend (remplacez par votre URL déployée)
+const BACKEND_URL = 'http://localhost:3000'; // À remplacer après déploiement
+
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        console.log('📧 Tentative d\'envoi du formulaire...');
+        console.log('📧 Envoi du message au serveur...');
         
         // Afficher le statut de chargement
         formStatus.className = 'form-status loading';
@@ -100,50 +20,44 @@ if (contactForm) {
         submitBtn.disabled = true;
         
         try {
-            // S'assurer que EmailJS est chargé
-            if (!emailjsLoaded) {
-                console.log('⏳ Attente du chargement d\'EmailJS...');
-                const loaded = await loadEmailJS();
-                if (!loaded) {
-                    throw new Error('EmailJS n\'a pas pu être chargé');
-                }
-            }
+            // Récupérer les données du formulaire
+            const formData = new FormData(contactForm);
+            const data = {
+                user_name: formData.get('user_name'),
+                user_email: formData.get('user_email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
             
-            // Vérifier que les clés sont configurées
-            if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY' || 
-                EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
-                EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
-                formStatus.className = 'form-status error';
-                formStatus.textContent = '⚠️ EmailJS non configuré. Consultez le fichier script.js';
-                submitBtn.disabled = false;
-                return;
-            }
+            // Envoyer au backend
+            const response = await fetch(`${BACKEND_URL}/api/send-email`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
             
-            console.log('📤 Envoi via EmailJS...');
-            const response = await emailjs.sendForm(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                contactForm
-            );
+            const result = await response.json();
             
-            console.log('✅ Réponse:', response.status);
-            
-            if (response.status === 200) {
+            if (response.ok && result.success) {
+                console.log('✅ Email envoyé avec succès');
                 formStatus.className = 'form-status success';
                 formStatus.textContent = '✅ Message envoyé avec succès! Je vous répondrai bientôt.';
                 contactForm.reset();
+                submitBtn.disabled = false;
                 
+                // Masquer le message après 5 secondes
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                 }, 5000);
             } else {
-                throw new Error('Erreur serveur');
+                throw new Error(result.error || 'Erreur serveur');
             }
         } catch (error) {
             console.error('❌ Erreur:', error.message);
             formStatus.className = 'form-status error';
-            formStatus.textContent = '❌ Erreur: ' + error.message.substring(0, 60);
-        } finally {
+            formStatus.textContent = '❌ Erreur: ' + error.message;
             submitBtn.disabled = false;
         }
     });
