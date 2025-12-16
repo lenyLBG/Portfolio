@@ -6,7 +6,7 @@ const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
 
 // URL de votre backend (remplacez par votre URL déployée)
-const BACKEND_URL = 'http://localhost:3000'; // À remplacer après déploiement
+const BACKEND_URL = 'https://portfolio-8aum.onrender.com/'; // À remplacer après déploiement
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
