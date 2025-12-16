@@ -1,21 +1,34 @@
 // ==========================================
 // INITIALISATION EMAILJS
 // ==========================================
-// 1. Créez un compte gratuit sur https://www.emailjs.com/
-// 2. Remplacez 'YOUR_PUBLIC_KEY' par votre clé publique EmailJS
-// 3. Remplacez 'YOUR_SERVICE_ID' par votre ID de service
-// 4. Remplacez 'YOUR_TEMPLATE_ID' par votre ID de template
-
 const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm'; // Votre clé publique
 const EMAILJS_SERVICE_ID = 'service_zqy6okk'; // Votre ID de service
 const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
 
-// Initialiser EmailJS une fois qu'il est chargé
-if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-    console.log('✅ EmailJS initialisé');
+// Attendre que EmailJS soit disponible
+function initEmailJS() {
+    if (typeof emailjs !== 'undefined') {
+        try {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+            console.log('✅ EmailJS initialisé avec succès');
+            return true;
+        } catch (error) {
+            console.error('❌ Erreur lors de l\'initialisation de EmailJS:', error);
+            return false;
+        }
+    } else {
+        console.warn('⏳ EmailJS en cours de chargement...');
+        // Réessayer après 500ms
+        setTimeout(initEmailJS, 500);
+        return false;
+    }
+}
+
+// Initialiser EmailJS au chargement
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailJS);
 } else {
-    console.warn('⚠️ EmailJS n\'est pas chargé encore');
+    initEmailJS();
 }
 
 // ==========================================
