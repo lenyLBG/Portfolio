@@ -6,9 +6,9 @@
 // 3. Remplacez 'YOUR_SERVICE_ID' par votre ID de service
 // 4. Remplacez 'YOUR_TEMPLATE_ID' par votre ID de template
 
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Remplacez par votre clé
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Remplacez par votre ID de service
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Remplacez par votre ID de template
+const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm'; // Votre clé publique
+const EMAILJS_SERVICE_ID = 'service_zqy6okk'; // Votre ID de service
+const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
 
 // Initialiser EmailJS
 emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -25,9 +25,9 @@ if (contactForm) {
         e.preventDefault();
         
         // Vérifier que les clés sont configurées
-        if (EMAILJS_PUBLIC_KEY === 'MiWfB4Nu-DTa4AEJm' || 
-            EMAILJS_SERVICE_ID === 'service_zqy6okk' || 
-            EMAILJS_TEMPLATE_ID === 'template_rljs4lm') {
+        if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY' || 
+            EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
+            EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID') {
             formStatus.className = 'form-status error';
             formStatus.textContent = '⚠️ EmailJS non configuré. Consultez le fichier script.js pour les instructions.';
             return;
