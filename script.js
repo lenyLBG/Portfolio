@@ -1,18 +1,26 @@
 // ==========================================
-// FORMULAIRE DE CONTACT - Backend
+// EMAILJS DIRECT - Configuration
+// ==========================================
+const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm';
+const EMAILJS_SERVICE_ID = 'service_zqy6okk';
+const EMAILJS_TEMPLATE_ID = 'template_rljs4lm';
+
+// Initialiser EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
+console.log('✅ EmailJS initialisé');
+
+// ==========================================
+// FORMULAIRE DE CONTACT
 // ==========================================
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
 
-// URL de votre backend (remplacez par votre URL déployée)
-const BACKEND_URL = 'https://portfolio-8aum.onrender.com/'; // À remplacer après déploiement
-
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        console.log('📧 Envoi du message au serveur...');
+        console.log('📧 Envoi du message...');
         
         // Afficher le statut de chargement
         formStatus.className = 'form-status loading';
@@ -20,40 +28,15 @@ if (contactForm) {
         submitBtn.disabled = true;
         
         try {
-            // Récupérer les données du formulaire
-            const formData = new FormData(contactForm);
-            const data = {
-                user_name: formData.get('user_name'),
-                user_email: formData.get('user_email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
+            const response = await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                contactForm
+            );
             
-            // Envoyer au backend
-            const response = await fetch(`${BACKEND_URL}/api/send-email`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+            console.log('✅ Success:', response);
             
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
-            
-            // Vérifier si la réponse est du JSON
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                const text = await response.text();
-                console.error('❌ Réponse non-JSON:', text);
-                throw new Error('Serveur a retourné une réponse invalide');
-            }
-            
-            const result = await response.json();
-            console.log('Result:', result);
-            
-            if (response.ok && result.success) {
-                console.log('✅ Email envoyé avec succès');
+            if (response.status === 200) {
                 formStatus.className = 'form-status success';
                 formStatus.textContent = '✅ Message envoyé avec succès! Je vous répondrai bientôt.';
                 contactForm.reset();
@@ -63,13 +46,11 @@ if (contactForm) {
                 setTimeout(() => {
                     formStatus.style.display = 'none';
                 }, 5000);
-            } else {
-                throw new Error(result.error || 'Erreur serveur');
             }
         } catch (error) {
-            console.error('❌ Erreur:', error.message);
+            console.error('❌ Erreur:', error);
             formStatus.className = 'form-status error';
-            formStatus.textContent = '❌ Erreur: ' + error.message;
+            formStatus.textContent = '❌ Erreur lors de l\'envoi: ' + error.message;
             submitBtn.disabled = false;
         }
     });
