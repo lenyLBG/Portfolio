@@ -7,37 +7,68 @@ const EMAILJS_TEMPLATE_ID = 'template_rljs4lm'; // Votre ID de template
 
 let emailjsLoaded = false;
 
-// Charger EmailJS dynamiquement
+// Liste des CDNs à essayer
+const CDN_URLS = [
+    'https://unpkg.com/@emailjs/browser@4/dist/index.min.js',
+    'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js',
+    'https://emailjs.com/dist/email.min.js'
+];
+
+// Charger EmailJS dynamiquement avec fallback CDN
 function loadEmailJS() {
     return new Promise((resolve) => {
         if (typeof emailjs !== 'undefined') {
             console.log('✅ EmailJS déjà chargé');
             emailjsLoaded = true;
-            emailjs.init(EMAILJS_PUBLIC_KEY);
+            try {
+                emailjs.init(EMAILJS_PUBLIC_KEY);
+                console.log('✅ EmailJS initialisé');
+            } catch (e) {
+                console.error('Erreur init:', e);
+            }
             resolve(true);
-        } else {
-            console.log('📥 Chargement d\'EmailJS...');
+            return;
+        }
+
+        function tryNextCDN(cdnIndex) {
+            if (cdnIndex >= CDN_URLS.length) {
+                console.error('❌ Impossible de charger EmailJS depuis tous les CDNs');
+                resolve(false);
+                return;
+            }
+
+            const cdnUrl = CDN_URLS[cdnIndex];
+            console.log(`📥 Essai CDN ${cdnIndex + 1}/${CDN_URLS.length}: ${cdnUrl}`);
+            
             const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js';
+            script.src = cdnUrl;
             script.async = true;
+            
             script.onload = () => {
-                console.log('✅ EmailJS chargé');
+                console.log(`✅ EmailJS chargé depuis: ${cdnUrl}`);
                 emailjsLoaded = true;
                 try {
                     emailjs.init(EMAILJS_PUBLIC_KEY);
                     console.log('✅ EmailJS initialisé');
-                    resolve(true);
                 } catch (error) {
                     console.error('❌ Erreur initialisation:', error);
-                    resolve(false);
                 }
+                resolve(true);
             };
+            
             script.onerror = () => {
-                console.error('❌ Erreur chargement EmailJS');
-                resolve(false);
+                console.warn(`⚠️ CDN ${cdnIndex + 1} échoué, essai suivant...`);
+                // Retirer le script en erreur
+                document.head.removeChild(script);
+                // Essayer le CDN suivant
+                tryNextCDN(cdnIndex + 1);
             };
+            
             document.head.appendChild(script);
         }
+
+        // Commencer par le premier CDN
+        tryNextCDN(0);
     });
 }
 
@@ -45,6 +76,8 @@ function loadEmailJS() {
 loadEmailJS().then(success => {
     if (success) {
         console.log('📧 EmailJS prêt à être utilisé');
+    } else {
+        console.error('❌ EmailJS n\'a pas pu être chargé');
     }
 });
 
