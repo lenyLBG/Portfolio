@@ -1,0 +1,27 @@
+# SEO Rules
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /styles.css
+Allow: /script.js
+
+# Disallow private/admin areas
+Disallow: /admin
+Disallow: /private
+
+# Sitemap
+Sitemap: https://lenyleborgne.dev/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 0
+Request-rate: 30/1m
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
