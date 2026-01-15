@@ -209,7 +209,7 @@ document.querySelectorAll('.glass-card').forEach(stat => {
 // ==========================================
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('#desktopNav a, #mobileNav a');
     
     let current = '';
     sections.forEach(section => {
@@ -221,9 +221,14 @@ window.addEventListener('scroll', () => {
     });
     
     navLinks.forEach(link => {
-        link.classList.remove('text-cyan-300');
+        // Remove active state
+        link.classList.remove('text-cyan-400');
+        link.classList.add('hover:text-cyan-400');
+        
+        // Add active state to current section link
         if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('text-cyan-300');
+            link.classList.add('text-cyan-400');
+            link.classList.remove('hover:text-cyan-400');
         }
     });
 });
