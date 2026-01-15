@@ -63,10 +63,31 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const nav = document.querySelector('nav');
 
 if (mobileMenuBtn && nav) {
+    // Create mobile menu overlay
+    let mobileMenuOpen = false;
+    
     mobileMenuBtn.addEventListener('click', () => {
-        // Toggle mobile menu (can be enhanced with actual mobile menu implementation)
-        console.log('Mobile menu clicked');
-        // TODO: Implement mobile menu toggle if needed
+        mobileMenuOpen = !mobileMenuOpen;
+        
+        if (mobileMenuOpen) {
+            nav.classList.remove('hidden');
+            nav.classList.add('block');
+        } else {
+            nav.classList.remove('block');
+            nav.classList.add('hidden');
+        }
+    });
+    
+    // Close menu when clicking on a nav link
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                mobileMenuOpen = false;
+                nav.classList.remove('block');
+                nav.classList.add('hidden');
+            }
+        });
     });
 }
 
