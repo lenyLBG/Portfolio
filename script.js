@@ -187,9 +187,12 @@ const statObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
             const number = entry.target.querySelector('.text-cyan-400');
             if (number) {
-                const target = parseInt(number.textContent);
-                animateCounter(number, target);
-                entry.target.classList.add('counted');
+                // Remove '+' and parse the number
+                const target = parseInt(number.textContent.replace('+', ''));
+                if (!isNaN(target)) {
+                    animateCounter(number, target);
+                    entry.target.classList.add('counted');
+                }
             }
         }
     });
