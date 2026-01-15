@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html class="scroll-smooth" lang="en">
 
 <head>
     <!-- Google Tag Manager -->
@@ -12,11 +12,11 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-TVCQK46T');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
     <!-- Meta Tags SEO -->
-    <title>Leny Leborgne - Développeur Web & Logiciel | Portfolio</title>
+    <title>Leny Leborgne | Digital Architect</title>
     <meta name="description"
         content="Découvrez mon portfolio professionnel. Développeur web et logiciel spécialisé en React, Node.js, Python. Projets innovants et solutions digitales sur mesure.">
     <meta name="keywords"
@@ -28,7 +28,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Leny Leborgne - Développeur Web & Logiciel">
+    <meta property="og:title" content="Leny Leborgne | Digital Architect">
     <meta property="og:description"
         content="Portfolio professionnel de développeur web et logiciel. Créez votre présence digitale avec des solutions innovantes.">
     <meta property="og:url" content="https://lenyleborgne.com">
@@ -36,7 +36,7 @@
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Leny Leborgne - Développeur Web & Logiciel">
+    <meta name="twitter:title" content="Leny Leborgne | Digital Architect">
     <meta name="twitter:description" content="Portfolio professionnel - Solutions web et logicielles innovantes">
 
     <!-- Canonical URL -->
@@ -45,8 +45,14 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS v3 with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Montserrat (Headers) and Inter (Body) -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Montserrat:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <!-- Google Analytics (optionnel) -->
@@ -79,286 +85,459 @@
         "knowsAbout": ["JavaScript", "React", "Node.js", "Python", "TypeScript", "CSS", "HTML"]
     }
     </script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            cyan: {
+              400: '#22d3ee', // Bright Cyan
+              500: '#06b6d4', // Standard Cyan
+              glow: '#00e5ff', // Electric Blue
+            },
+            dark: {
+              900: '#0B1120', // Deep Navy/Black
+              800: '#1e293b',
+            }
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+    </script>
+
+    <!-- Custom Styles -->
+    <style data-purpose="custom-utilities">
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #22d3ee;
+    }
+
+    /* Text Gradient Utility */
+    .text-gradient {
+      background: linear-gradient(to right, #ffffff, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glassmorphism Card Utility - UPDATED */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Stronger Glass for Nav */
+    .glass-nav {
+      background: rgba(11, 17, 32, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    /* Glow Animation for Skills */
+    .skill-card {
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    .skill-card:hover {
+      border-color: #00e5ff;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+      transform: translateY(-5px);
+    }
+
+    /* Background Mesh/Glow Effect */
+    .bg-glow-blob {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(34,211,238,0.15) 0%, rgba(11,17,32,0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Form status styles */
+    .form-status {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    .form-status.loading {
+      background: rgba(34, 211, 238, 0.1);
+      color: #22d3ee;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+    }
+    .form-status.success {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+    .form-status.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    </style>
 </head>
 
-<body>
+<body class="text-slate-300 font-sans antialiased selection:bg-cyan-500 selection:text-white overflow-x-hidden relative" style="background: linear-gradient(to bottom, rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), #0B1120; background-size: cover; background-attachment: fixed; background-position: center;">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVCQK46T" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html" class="logo-text">&lt;Leny Leborgne/&gt;</a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
 
+    <!-- Background Ambience -->
+    <div class="bg-glow-blob top-[-200px] left-[-200px]"></div>
+    <div class="bg-glow-blob bottom-[-200px] right-[-200px]"></div>
+    <div class="bg-glow-blob top-[40%] left-[50%] translate-x-[-50%] w-[800px] h-[800px] opacity-50"></div>
+
+    <!-- BEGIN: Header -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="font-display font-bold text-xl tracking-wider text-white uppercase">
+                Leny Leborgne
             </div>
+            <!-- Navigation (Desktop) -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8 text-sm font-medium uppercase tracking-wide">
+                    <li><a class="text-cyan-400 hover:text-cyan-300 transition-colors" href="#home">Home</a></li>
+                    <li><a class="hover:text-cyan-400 transition-colors" href="#about">About</a></li>
+                    <li><a class="hover:text-cyan-400 transition-colors" href="#skills">Skills</a></li>
+                    <li><a class="hover:text-cyan-400 transition-colors" href="#projects">Projects</a></li>
+                    <li><a class="hover:text-cyan-400 transition-colors" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Button (Placeholder) -->
+            <button class="md:hidden text-white focus:outline-none" id="mobileMenuBtn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            </button>
         </div>
-    </nav>
+    </header>
+    <!-- END: Header -->
 
-    <!-- Hero Section -->
-    <section id="accueil" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Bonjour, je suis <span class="highlight">Leny Leborgne</span>
-                </h1>
-                <h2 class="hero-subtitle">Développeur Web & Logiciel</h2>
-                <p class="hero-description">
-                    Je crée des expériences digitales innovantes et des solutions logicielles sur mesure.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
-                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="code-window">
-                    <div class="window-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                    </div>
-                    <div class="code-content">
-                        <pre><code class="code-text">
-<span class="keyword">function</span> <span class="function">createAwesome</span>() {
-    <span class="keyword">const</span> skills = [
-        <span class="string">'JavaScript'</span>,
-        <span class="string">'html'</span>,
-        <span class="string">'php'</span>,
-        <span class="string">'css'</span>,
-        <span class="string">'c#'</span>
-    ];
-    
-    <span class="keyword">return</span> skills.<span class="function">map</span>(
-        skill => <span class="string">`Master ${skill}`</span>
-    );
-}
-                        </code></pre>
-                    </div>
-                </div>
+    <!-- BEGIN: Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20" id="home">
+        <div class="container mx-auto px-6 text-center z-10">
+            <h2 class="text-cyan-400 font-display font-semibold tracking-widest mb-4 uppercase text-sm md:text-base animate-pulse">
+                Welcome to my portfolio
+            </h2>
+            <h1 class="font-display mb-6">
+                <span class="block text-white font-bold text-4xl uppercase tracking-wide">CREATING THE</span>
+                <span class="block font-extrabold text-6xl md:text-8xl text-transparent bg-clip-text uppercase mt-1" style="background-image: linear-gradient(to right, #00C6FF, #0072FF);">DIGITAL FUTURE.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-slate-400 text-lg md:text-xl leading-relaxed mb-20">
+                Software Developer &amp; Architect. Crafting high performance solutions with precision and creativity.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a class="px-8 py-3 rounded-full border border-cyan-400 text-cyan-400 font-semibold hover:bg-cyan-400/10 transition-all duration-300 w-full sm:w-auto" href="#projects">
+                    View Projects
+                </a>
+                <a class="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold shadow-[0_0_20px_rgba(34,211,238,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.7)] hover:scale-105 transition-all duration-300 w-full sm:w-auto" href="#contact" style="background: linear-gradient(to right, #00C6FF, #0072FF);">
+                    Get in Touch
+                </a>
             </div>
         </div>
     </section>
+    <!-- END: Hero Section -->
 
-    <!-- À propos Section -->
-    <section id="apropos" class="about">
-        <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        Passionné par le développement web et logiciel, je transforme des idées en solutions
-                        digitales performantes. Avec plusieurs années d'expérience, je maîtrise les dernières
-                        technologies pour créer des applications modernes et intuitives.
+    <!-- BEGIN: About Section -->
+    <section class="py-24 relative" id="about">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column: Code Image -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-900 shadow-2xl">
+                        <!-- Header of the "code editor" window -->
+                        <div class="bg-slate-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="ml-4 text-xs text-slate-400 font-mono">main.js - Project</span>
+                        </div>
+                        <!-- Placeholder Image -->
+                        <img alt="Code Editor Interface" class="w-full h-auto object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmMyg8e7vVvN16lQYBiO9UVqv592KuZM0bgL6wcISa9VIk0MMW9Jkeqfvcy1Ks0Q1CfVSrcUraaLmRAke18NJNbbJYngTa4Oq4wfSdhsyowb4L3q5tdFxrEOEoapuQcig-KNqy0IAwUA-KKLj8mDZHnj7Bh28q5Y0_VNPzOBA-bc1cs4nIi8CHVeTcEw9b9wRLMsKHEVrwC--SSKWt1gN0bvfzbG2lrsBvi0Qduw-YHlG5LTpLmpm2nnz_d_DXGdAlVlQRpREOAZk" style="box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);"/>
+                    </div>
+                </div>
+                <!-- Right Column: Content -->
+                <div>
+                    <h2 class="font-display font-bold text-4xl text-white mb-6">ABOUT <span class="text-cyan-400">ME</span></h2>
+                    <p class="text-slate-400 mb-8 leading-relaxed">
+                        Transforming complex challenges into elegant, scalable digital experiences. Passionate about full-stack development, architecture, and emerging technologies. I build systems that are not just functional, but performant and user-centric.
                     </p>
-                    <p>
-                        Mon approche combine créativité, rigueur technique et une attention particulière
-                        à l'expérience utilisateur. Je suis constamment en veille technologique pour offrir
-                        les meilleures solutions à mes clients.
-                    </p>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number">2+</span>
-                            <span class="stat-label">Années d'études</span>
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Stat 1 -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="text-cyan-400 text-3xl font-bold mb-1">5+</div>
+                            <div class="text-sm text-slate-300">Years Experience</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">13+</span>
-                            <span class="stat-label">Projets réalisés</span>
+                        <!-- Stat 2 -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="text-cyan-400 text-3xl font-bold mb-1">100+</div>
+                            <div class="text-sm text-slate-300">Projects Delivered</div>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Compétences Section -->
-    <section id="competences" class="skills">
-        <div class="container">
-            <h2 class="section-title">Mes Compétences</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Développement Frontend</h3>
-                    <ul class="skill-list">
-                        <li>HTML5 / CSS3 / JavaScript</li>
-                        <li>React / Vue.js / Angular</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Développement Backend</h3>
-                    <ul class="skill-list">
-                        <li>Node.js</li>
-                        <li>Python</li>
-                        <li>PHP</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Base de Données</h3>
-                    <ul class="skill-list">
-                        <li>MySQL / MariaDB</li>
-                        <li>SQLite</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Outils & DevOps</h3>
-                    <ul class="skill-list">
-                        <li>Git / GitHub</li>
-                        <li>Docker</li>
-                        <li>CI/CD</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projets Section -->
-    <section id="projets" class="projects">
-        <div class="container">
-            <h2 class="section-title">Mes Projets</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/fcfulbert.png" alt="FC-Fulbert Project">
-                        <div class="project-overlay">
-                            <a href="https://fc-fulbert.site" class="project-link"><i
-                                    class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/FC-Fulbert7/FC-Fulbert" class="project-link"><i
-                                    class="fab fa-github"></i></a>
+                        <!-- Stat 3 -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="text-cyan-400 text-3xl font-bold mb-1">20+</div>
+                            <div class="text-sm text-slate-300">Technologies Mastered</div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>FC-Fulbert</h3>
-                        <p>Un defi de referencement SEO de site web pour le club de football ficif FC-Fulbert.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/nuitinfo.png" alt="UI-de-l-info Project">
-                        <div class="project-overlay">
-                            <a href="https://menexsoul.github.io/UI-de-l-info/" class="project-link"><i
-                                    class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/Menexsoul/UI-de-l-info" class="project-link"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>UI-de-l-info</h3>
-                        <p>Projet de defis de la nuit de l'info.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">CSS</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/imageCluedo.jpg" alt="Cluedo Project">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                            <a href="https://github.com/lenyLBG/Cluedo" class="project-link"><i
-                                    class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Cluedo</h3>
-                        <p>Projet etudiant visant a recreer le jeu de société Cluedo en version digitale.</p>
-                        <div class="project-tags">
-                            <span class="tag">PHP</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">SQLite</span>
+                        <!-- Stat 4 -->
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="text-cyan-400 text-3xl font-bold mb-1">500+</div>
+                            <div class="text-sm text-slate-300">Coffee Cups</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!-- END: About Section -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Discutons de votre projet</h3>
-                    <p>
-                        Vous avez un projet en tête ? N'hésitez pas à me contacter.
-                        Je serais ravi de discuter de vos besoins et de voir comment je peux vous aider.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:lenyleborgne4@gmail.com">lenyleborgne4@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <a href="https://www.google.com/maps/place/Chartres,+France" target="_blank" rel="noopener noreferrer">Chartres, France</a>
-                        </div>
+    <!-- BEGIN: Skills Section -->
+    <section class="py-24 relative" id="skills">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="font-display font-bold text-4xl text-white uppercase tracking-wider">Skills</h2>
+                <div class="h-1 w-20 bg-cyan-500 mt-2 rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Skill 1: Frontend -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Atom Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                     </div>
-                    <div class="social-links">
-                        <a href="https://github.com/lenyLBG" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/leny-leborgne-729009362/" class="social-link"><i
-                                class="fab fa-linkedin"></i></a>
-                    </div>
+                    <h3 class="text-white font-semibold">Frontend</h3>
+                    <p class="text-xs text-slate-500 mt-1">React, Vue, Angular</p>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="user_name" placeholder="Votre nom" required>
+                <!-- Skill 2: Backend -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Server Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="user_email" placeholder="Votre email" required>
+                    <h3 class="text-white font-semibold">Backend</h3>
+                    <p class="text-xs text-slate-500 mt-1">Node.js, Python, Go</p>
+                </div>
+                <!-- Skill 3: Database -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Database Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" placeholder="Sujet" required>
+                    <h3 class="text-white font-semibold">Database</h3>
+                    <p class="text-xs text-slate-500 mt-1">PostgreSQL, Mongo, Redis</p>
+                </div>
+                <!-- Skill 4: DevOps -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Cloud Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                     </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Votre message" rows="5" required></textarea>
+                    <h3 class="text-white font-semibold">DevOps</h3>
+                    <p class="text-xs text-slate-500 mt-1">Docker, K8s, AWS</p>
+                </div>
+                <!-- Skill 5: Mobile -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Mobile Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer le message</button>
+                    <h3 class="text-white font-semibold">Mobile</h3>
+                    <p class="text-xs text-slate-500 mt-1">Flutter, React Native</p>
+                </div>
+                <!-- Skill 6: AI/ML -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Brain Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+                    </div>
+                    <h3 class="text-white font-semibold">AI/ML</h3>
+                    <p class="text-xs text-slate-500 mt-1">TensorFlow, PyTorch</p>
+                </div>
+                <!-- Skill 7: Blockchain -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Link Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+                    </div>
+                    <h3 class="text-white font-semibold">Blockchain</h3>
+                    <p class="text-xs text-slate-500 mt-1">Solidity, Ethereum</p>
+                </div>
+                <!-- Skill 8: UI/UX -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Pen Tool Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+                    </div>
+                    <h3 class="text-white font-semibold">UI/UX</h3>
+                    <p class="text-xs text-slate-500 mt-1">Figma, Adobe XD</p>
+                </div>
+                <!-- Skill 9: Security -->
+                <div class="glass-card skill-card rounded-2xl p-6 flex flex-col items-center justify-center text-center group cursor-default">
+                    <div class="text-cyan-400 mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                        <!-- Shield Icon -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+                    </div>
+                    <h3 class="text-white font-semibold">Security</h3>
+                    <p class="text-xs text-slate-500 mt-1">OWASP, OAuth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Skills Section -->
+
+    <!-- BEGIN: Projects Section -->
+    <section class="py-24 relative" id="projects">
+        <div class="container mx-auto px-6">
+            <div class="mb-12">
+                <h2 class="font-display font-bold text-4xl text-white uppercase tracking-wider">Projects</h2>
+                <div class="h-1 w-20 bg-cyan-500 mt-2 rounded-full shadow-[0_0_10px_#22d3ee]"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Project 1: FC-Fulbert -->
+                <article class="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-all z-10"></div>
+                        <img alt="FC-Fulbert Project" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="img/fcfulbert.png"/>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2 uppercase">FC-Fulbert</h3>
+                        <p class="text-slate-400 text-sm mb-3">Un defi de referencement SEO de site web pour le club de football ficif FC-Fulbert.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">HTML</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">CSS</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 2: UI-de-l-info -->
+                <article class="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-all z-10"></div>
+                        <img alt="UI-de-l-info Project" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="img/nuitinfo.png"/>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2 uppercase">UI-de-l-info</h3>
+                        <p class="text-slate-400 text-sm mb-3">Projet de defis de la nuit de l'info.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">HTML</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">JavaScript</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">CSS</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 3: Cluedo -->
+                <article class="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-all z-10"></div>
+                        <img alt="Cluedo Project" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="img/imageCluedo.jpg"/>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2 uppercase">Cluedo</h3>
+                        <p class="text-slate-400 text-sm mb-3">Projet etudiant visant a recreer le jeu de société Cluedo en version digitale.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">PHP</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">JavaScript</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">SQLite</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Project 4: Placeholder -->
+                <article class="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-all z-10"></div>
+                        <img alt="Smart Home Control" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDX3yb_Tym7CVtruhjgGjJbgB01uJ-qUgB2dv1WfV3hB1f5OWG1vqfpasalLnE662SgsLA3yRmZwjkRd1NXjwy5rr1yB6ii7_atsqgOZbe7pU4P8rNC3kR11IWVpkxTc8HyickOZiURHLSUX5m_sfSnZFnj2em12ciS7sQ76vUbkOZfZgAEZEKMByw7blNlsFWbx_SnXAgpkjkBxjKUUOKxo4FHsgCm3IF3pQOIyCvUd86r7MrkkRajGGIRvPKBP0X-AE8trr1-Ckg"/>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-white font-bold text-lg mb-2 uppercase">Smart Home Control</h3>
+                        <p class="text-slate-400 text-sm mb-3">A modern smart home control system with IoT integration.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">IoT</span>
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-md">React Native</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- END: Projects Section -->
+
+    <!-- BEGIN: Contact Section -->
+    <section class="py-24 relative overflow-hidden" id="contact">
+        <!-- Subtle glow behind form -->
+        <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-cyan-900/20 to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-10 text-left">
+                    <h2 class="font-display font-bold text-4xl text-white uppercase mb-2">Contact</h2>
+                    <p class="text-cyan-400 font-semibold tracking-wide uppercase">Ready to innovate? Let's collaborate.</p>
+                </div>
+                <form class="space-y-6" id="contactForm">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400" for="name">Name</label>
+                            <input class="w-full glass-card rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors" id="name" name="user_name" placeholder="Your Name" type="text" required/>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-slate-400" for="email">Email</label>
+                            <input class="w-full glass-card rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors" id="email" name="user_email" placeholder="your@email.com" type="email" required/>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-slate-400" for="subject">Subject</label>
+                        <input class="w-full glass-card rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors" id="subject" name="subject" placeholder="Project subject" type="text" required/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-slate-400" for="message">Message</label>
+                        <textarea class="w-full glass-card rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors resize-none" id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button class="w-full py-4 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-white font-bold tracking-wide uppercase shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)] transition-all duration-300" style="background: linear-gradient(to right, #00C6FF, #0072FF);" type="submit" id="submitBtn">
+                        Send Message
+                    </button>
                     <div id="formStatus" class="form-status"></div>
                 </form>
+                <footer class="mt-20 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex space-x-6">
+                        <!-- LinkedIn -->
+                        <a class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.5)]" href="https://www.linkedin.com/in/leny-leborgne-729009362/" target="_blank" rel="noopener noreferrer">
+                            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        </a>
+                        <!-- GitHub -->
+                        <a class="w-10 h-10 rounded bg-slate-800 flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all shadow-[0_0_10px_rgba(34,211,238,0.1)] hover:shadow-[0_0_15px_rgba(34,211,238,0.5)]" href="https://github.com/lenyLBG" target="_blank" rel="noopener noreferrer">
+                            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                        </a>
+                    </div>
+                    <p class="text-xs text-slate-500">© 2025 Leny Leborgne. All Rights Reserved.</p>
+                </footer>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Leny Leborgne. Tous droits réservés.</p>
-        </div>
-    </footer>
+    <!-- END: Contact Section -->
 
     <script src="script.js"></script>
 </body>
