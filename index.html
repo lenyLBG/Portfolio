@@ -221,7 +221,7 @@
                 Leny Leborgne
             </div>
             <!-- Navigation (Desktop) -->
-            <nav class="hidden md:block">
+            <nav class="hidden md:block" id="desktopNav">
                 <ul class="flex space-x-8 text-sm font-medium uppercase tracking-wide">
                     <li><a class="text-cyan-400 hover:text-cyan-300 transition-colors" href="#home">Home</a></li>
                     <li><a class="hover:text-cyan-400 transition-colors" href="#about">About</a></li>
@@ -230,11 +230,21 @@
                     <li><a class="hover:text-cyan-400 transition-colors" href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <!-- Mobile Menu Button (Placeholder) -->
+            <!-- Mobile Menu Button -->
             <button class="md:hidden text-white focus:outline-none" id="mobileMenuBtn">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
             </button>
         </div>
+        <!-- Mobile Menu -->
+        <nav class="md:hidden hidden" id="mobileNav">
+            <ul class="flex flex-col space-y-4 px-6 py-4 text-sm font-medium uppercase tracking-wide">
+                <li><a class="text-cyan-400 hover:text-cyan-300 transition-colors block py-2" href="#home">Home</a></li>
+                <li><a class="hover:text-cyan-400 transition-colors block py-2" href="#about">About</a></li>
+                <li><a class="hover:text-cyan-400 transition-colors block py-2" href="#skills">Skills</a></li>
+                <li><a class="hover:text-cyan-400 transition-colors block py-2" href="#projects">Projects</a></li>
+                <li><a class="hover:text-cyan-400 transition-colors block py-2" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
     <!-- END: Header -->
 

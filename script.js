@@ -60,33 +60,18 @@ if (contactForm) {
 // NAVIGATION MOBILE
 // ==========================================
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const nav = document.querySelector('nav');
+const mobileNav = document.getElementById('mobileNav');
 
-if (mobileMenuBtn && nav) {
-    // Create mobile menu overlay
-    let mobileMenuOpen = false;
-    
+if (mobileMenuBtn && mobileNav) {
     mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuOpen = !mobileMenuOpen;
-        
-        if (mobileMenuOpen) {
-            nav.classList.remove('hidden');
-            nav.classList.add('block');
-        } else {
-            nav.classList.remove('block');
-            nav.classList.add('hidden');
-        }
+        mobileNav.classList.toggle('hidden');
     });
     
     // Close menu when clicking on a nav link
-    const navLinks = nav.querySelectorAll('a');
-    navLinks.forEach(link => {
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    mobileNavLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth < 768) {
-                mobileMenuOpen = false;
-                nav.classList.remove('block');
-                nav.classList.add('hidden');
-            }
+            mobileNav.classList.add('hidden');
         });
     });
 }
