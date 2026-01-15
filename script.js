@@ -59,34 +59,16 @@ if (contactForm) {
 // ==========================================
 // NAVIGATION MOBILE
 // ==========================================
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-const navLinks = document.querySelectorAll('.nav-links li');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const nav = document.querySelector('nav');
 
-burger.addEventListener('click', () => {
-    // Toggle Nav
-    nav.classList.toggle('active');
-    
-    // Animate Links
-    navLinks.forEach((link, index) => {
-        if (link.style.animation) {
-            link.style.animation = '';
-        } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-        }
+if (mobileMenuBtn && nav) {
+    mobileMenuBtn.addEventListener('click', () => {
+        // Toggle mobile menu (can be enhanced with actual mobile menu implementation)
+        console.log('Mobile menu clicked');
+        // TODO: Implement mobile menu toggle if needed
     });
-    
-    // Burger Animation
-    burger.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        nav.classList.remove('active');
-        burger.classList.remove('active');
-    });
-});
+}
 
 // ==========================================
 // SMOOTH SCROLL
@@ -108,13 +90,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // NAVBAR BACKGROUND ON SCROLL
 // ==========================================
 window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(0, 15, 38, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(82, 245, 235, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(0, 15, 38, 0.95)';
-        navbar.style.boxShadow = 'none';
+    const header = document.querySelector('header');
+    if (header) {
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(11, 17, 32, 0.85)';
+        } else {
+            header.style.background = 'rgba(11, 17, 32, 0.7)';
+        }
     }
 });
 
@@ -153,7 +135,7 @@ skillCards.forEach((card, index) => {
 });
 
 // Animate project cards on scroll
-const projectCards = document.querySelectorAll('.project-card');
+const projectCards = document.querySelectorAll('article');
 projectCards.forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
@@ -166,15 +148,10 @@ projectCards.forEach((card, index) => {
 // ==========================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.hero-content');
-    const codeWindow = document.querySelector('.code-window');
+    const heroSection = document.querySelector('#home .container');
     
-    if (parallax && scrolled < window.innerHeight) {
-        parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
-    }
-    
-    if (codeWindow && scrolled < window.innerHeight) {
-        codeWindow.style.transform = `translateY(${scrolled * 0.2}px)`;
+    if (heroSection && scrolled < window.innerHeight) {
+        heroSection.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
 });
 
@@ -202,16 +179,20 @@ function animateCounter(element, target, duration = 2000) {
 const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-            const number = entry.target.querySelector('.stat-number');
-            const target = parseInt(number.textContent);
-            animateCounter(number, target);
-            entry.target.classList.add('counted');
+            const number = entry.target.querySelector('.text-cyan-400');
+            if (number) {
+                const target = parseInt(number.textContent);
+                animateCounter(number, target);
+                entry.target.classList.add('counted');
+            }
         }
     });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.stat-item').forEach(stat => {
-    statObserver.observe(stat);
+document.querySelectorAll('.glass-card').forEach(stat => {
+    if (stat.querySelector('.text-cyan-400')) {
+        statObserver.observe(stat);
+    }
 });
 
 // ==========================================
@@ -219,7 +200,7 @@ document.querySelectorAll('.stat-item').forEach(stat => {
 // ==========================================
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('nav a');
     
     let current = '';
     sections.forEach(section => {
@@ -231,9 +212,9 @@ window.addEventListener('scroll', () => {
     });
     
     navLinks.forEach(link => {
-        link.classList.remove('active');
+        link.classList.remove('text-cyan-300');
         if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+            link.classList.add('text-cyan-300');
         }
     });
 });
