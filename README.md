@@ -1,6 +1,106 @@
-# Portfolio - Développeur Web & Logiciel
+# Portfolio — Leny Leborgne
 
-Un portfolio moderne et responsive avec des animations fluides et un design professionnel.
+> Portfolio professionnel de développeur Web & Logiciel. Disponible sur [lenyleborgne.com](https://lenyleborgne.com)
+
+## 🎨 Design
+
+- **Fond** : `#060612` (noir profond)
+- **Primaire** : `#8b5cf6` (violet)
+- **Secondaire** : `#06b6d4` (cyan)
+- **Texte** : `#f1f5f9` / `#94a3b8`
+- **Typographies** : Space Grotesk · Inter · Fira Code
+
+## ✨ Fonctionnalités
+
+- 📈 Barre de progression du scroll
+- 🌐 Navigation fixe avec effet blur au scroll + lien actif dynamique
+- 🎭 Hero avec blobs animés, grille décorative et carte de code syntax-highlighted
+- 🃏 Floating cards animées (expérience / projets)
+- 🔢 Numéros de section en filigrane
+- 💊 Tech pills cliquables
+- 🃏 Cartes de compétences avec bordure gradient au hover
+- 📦 Projet *featured* en pleine largeur
+- 📬 Formulaire de contact via EmailJS
+- 🪄 Reveal animations décalées au scroll (IntersectionObserver)
+- 📱 Menu mobile plein écran avec animation burger
+- 🎨 Scrollbar personnalisée
+
+## 📂 Structure
+
+```
+portfolio/
+├── index.html       # Page principale
+├── styles.css       # Feuille de styles (CSS custom, variables, responsive)
+├── script.js        # JS vanilla (nav, scroll, EmailJS, animations)
+├── server.js        # Backend Node.js (optionnel)
+├── img/             # Images des projets
+└── README.md
+```
+
+## 🛠️ Stack
+
+| Couche | Technologie |
+|--------|------------|
+| Markup | HTML5 sémantique |
+| Style | CSS3 — Variables, Flexbox, Grid, Animations |
+| Script | JavaScript vanilla (ES2020+) |
+| Icônes | Font Awesome 6 |
+| Polices | Google Fonts (Space Grotesk, Inter, Fira Code) |
+| Contact | EmailJS |
+| Analytics | Google Tag Manager |
+
+## ⚙️ Personnalisation
+
+### Couleurs
+```css
+/* styles.css — :root */
+--primary: #8b5cf6;
+--secondary: #06b6d4;
+--bg: #060612;
+```
+
+### Ajouter un projet
+```html
+<!-- index.html — .projects-grid -->
+<article class="project-card">
+    <div class="project-img">
+        <img src="img/mon-projet.png" alt="Mon Projet" loading="lazy">
+        <div class="project-overlay">
+            <a href="URL" class="overlay-btn"><i class="fas fa-external-link-alt"></i></a>
+            <a href="GITHUB" class="overlay-btn"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+    <div class="project-info">
+        <span class="project-category">Catégorie</span>
+        <h3>Titre du projet</h3>
+        <p>Description courte.</p>
+        <div class="project-tags">
+            <span class="tag">Tech</span>
+        </div>
+    </div>
+</article>
+```
+
+### EmailJS
+Remplacez les constantes dans `script.js` :
+```js
+const EMAILJS_PUBLIC_KEY = 'VOTRE_CLE';
+const EMAILJS_SERVICE_ID  = 'VOTRE_SERVICE';
+const EMAILJS_TEMPLATE_ID = 'VOTRE_TEMPLATE';
+```
+
+## 🚀 Déploiement
+
+| Plateforme | Méthode |
+|-----------|---------|
+| **GitHub Pages** | Push sur `main` → activer Pages dans les Settings |
+| **Netlify** | Glisser-déposer le dossier sur [netlify.com/drop](https://app.netlify.com/drop) |
+| **Vercel** | `vercel --prod` ou import GitHub |
+
+## 📄 Licence
+
+© 2025 Leny Leborgne — Tous droits réservés.
+
 
 ## 🎨 Couleurs
 
