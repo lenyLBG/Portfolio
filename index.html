@@ -66,8 +66,19 @@
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
+    <!-- Preload police principale -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Leny Leborgne">
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -196,6 +207,10 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVCQK46T" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
 
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -216,6 +231,9 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-cta">
+                <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+                    <i class="fas fa-sun" id="themeIcon"></i>
+                </button>
                 <a href="#contact" class="btn btn-primary btn-sm">Hire me</a>
             </div>
             <div class="burger" id="burger">
@@ -336,21 +354,21 @@
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-code"></i></div>
                         <div>
-                            <span class="stat-num">2+</span>
+                            <span class="stat-num counter" data-target="2" data-suffix="+">2+</span>
                             <span class="stat-text">Années d'études</span>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-rocket"></i></div>
                         <div>
-                            <span class="stat-num">13+</span>
+                            <span class="stat-num counter" data-target="13" data-suffix="+">13+</span>
                             <span class="stat-text">Projets réalisés</span>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-star"></i></div>
                         <div>
-                            <span class="stat-num">100%</span>
+                            <span class="stat-num counter" data-target="100" data-suffix="%">100%</span>
                             <span class="stat-text">Satisfaction client</span>
                         </div>
                     </div>
@@ -499,11 +517,109 @@
         </div>
     </section>
 
+    <!-- Langues Section -->
+    <section id="langues" class="languages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <p class="section-subtitle">Communication</p>
+                <h2 class="section-title">Langues</h2>
+            </div>
+            <div class="languages-grid">
+
+                <div class="language-card">
+                    <div class="lang-flag" aria-hidden="true">🇫🇷</div>
+                    <div class="lang-info">
+                        <h3>Français</h3>
+                        <span class="lang-level">Langue maternelle</span>
+                    </div>
+                    <div class="lang-bar-wrap">
+                        <div class="lang-bar" data-width="100"></div>
+                    </div>
+                    <span class="lang-badge">C2</span>
+                </div>
+
+                <div class="language-card">
+                    <div class="lang-flag" aria-hidden="true">🇬🇧</div>
+                    <div class="lang-info">
+                        <h3>Anglais</h3>
+                        <span class="lang-level">Niveau intermédiaire</span>
+                    </div>
+                    <div class="lang-bar-wrap">
+                        <div class="lang-bar" data-width="65"></div>
+                    </div>
+                    <span class="lang-badge">B1</span>
+                </div>
+
+                <div class="language-card placeholder-card">
+                    <div class="lang-flag" aria-hidden="true">🌐</div>
+                    <div class="lang-info">
+                        <h3>Autre langue</h3>
+                        <span class="lang-level">À remplir</span>
+                    </div>
+                    <div class="lang-bar-wrap">
+                        <div class="lang-bar" data-width="0"></div>
+                    </div>
+                    <span class="lang-badge">—</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <p class="section-subtitle">Comment je travaille</p>
+                <h2 class="section-title">Mon Process</h2>
+            </div>
+            <div class="process-steps">
+
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Découverte</h3>
+                    <p>On échange sur vos besoins, vos objectifs et vos contraintes. Je pose les bonnes questions pour cerner parfaitement votre projet.</p>
+                </div>
+
+                <div class="process-connector"><i class="fas fa-arrow-right"></i></div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fas fa-pencil-ruler"></i></div>
+                    <h3>Conception</h3>
+                    <p>Je propose une architecture, une maquette ou un plan technique. Devis détaillé et planning validés ensemble.</p>
+                </div>
+
+                <div class="process-connector"><i class="fas fa-arrow-right"></i></div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Développement</h3>
+                    <p>Développement itératif avec points réguliers. Code propre, commenté et versionné sur Git à chaque étape.</p>
+                </div>
+
+                <div class="process-connector"><i class="fas fa-arrow-right"></i></div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Livraison</h3>
+                    <p>Tests finaux, mise en production et transfert complet. Support post-livraison et documentation inclus.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">04</span>
+                <span class="section-number">06</span>
                 <p class="section-subtitle">Ce que je propose</p>
                 <h2 class="section-title">Services</h2>
             </div>
@@ -564,7 +680,7 @@
     <section id="projets" class="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">05</span>
+                <span class="section-number">07</span>
                 <p class="section-subtitle">Réalisations récentes</p>
                 <h2 class="section-title">Mes Projets</h2>
             </div>
@@ -664,7 +780,7 @@
     <section id="faq" class="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">06</span>
+                <span class="section-number">08</span>
                 <p class="section-subtitle">Questions fréquentes</p>
                 <h2 class="section-title">FAQ</h2>
             </div>
@@ -738,7 +854,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">07</span>
+                <span class="section-number">09</span>
                 <p class="section-subtitle">Travaillons ensemble</p>
                 <h2 class="section-title">Contact</h2>
             </div>
@@ -809,7 +925,7 @@
                     <span class="logo-name">LL</span>
                     <span class="logo-bracket">}</span>
                 </a>
-                <p class="footer-copy">&copy; 2025 Leny Leborgne — Tous droits réservés</p>
+                <p class="footer-copy">&copy; <span id="footerYear"></span> Leny Leborgne — Tous droits réservés</p>
                 <div class="footer-links">
                     <a href="https://github.com/lenyLBG" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/leny-leborgne-729009362/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -820,6 +936,13 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+    </script>
 </body>
 
 </html>
