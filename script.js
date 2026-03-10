@@ -133,10 +133,35 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
 document.querySelectorAll(
-    '.skill-card, .project-card, .stat-card, .tech-pill, .contact-link, .section-header'
+    '.skill-card, .project-card, .stat-card, .tech-pill, .contact-link, .section-header, .timeline-card, .service-card, .testimonial-card, .faq-item'
 ).forEach(el => {
     el.classList.add('reveal');
     revealObserver.observe(el);
+});
+
+// ==========================================
+// FAQ ACCORDION
+// ==========================================
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Fermer tout
+        document.querySelectorAll('.faq-item').forEach(i => {
+            i.classList.remove('open');
+            i.querySelector('.faq-answer').classList.remove('open');
+            i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Ouvrir l'item cliqué s'il était fermé
+        if (!isOpen) {
+            item.classList.add('open');
+            answer.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    });
 });
 
 // ==========================================

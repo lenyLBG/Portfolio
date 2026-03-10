@@ -25,22 +25,46 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="French">
     <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="category" content="Technology, Web Development">
+    <meta name="coverage" content="Worldwide">
+    <meta name="theme-color" content="#8b5cf6">
+
+    <!-- Géolocalisation (SEO local) -->
+    <meta name="geo.region" content="FR-28">
+    <meta name="geo.placename" content="Chartres, France">
+    <meta name="geo.position" content="48.447786;1.484478">
+    <meta name="ICBM" content="48.447786, 1.484478">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Leny Leborgne — Portfolio">
     <meta property="og:title" content="Leny Leborgne - Développeur Web & Logiciel">
     <meta property="og:description"
         content="Portfolio professionnel de développeur web et logiciel. Créez votre présence digitale avec des solutions innovantes.">
     <meta property="og:url" content="https://lenyleborgne.com">
     <meta property="og:image" content="https://lenyleborgne.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Leny Leborgne — Développeur Web & Logiciel, Portfolio">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Leny Leborgne - Développeur Web & Logiciel">
     <meta name="twitter:description" content="Portfolio professionnel - Solutions web et logicielles innovantes">
+    <meta name="twitter:image" content="https://lenyleborgne.com/og-image.png">
+    <meta name="twitter:image:alt" content="Leny Leborgne — Développeur Web & Logiciel">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://lenyleborgne.com">
+
+    <!-- DNS Prefetch pour les performances -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
@@ -52,25 +76,117 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD Schema — Person -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Leny Leborgne",
         "url": "https://lenyleborgne.com",
+        "image": "https://lenyleborgne.com/og-image.png",
         "jobTitle": "Développeur Web et Logiciel",
+        "description": "Développeur web et logiciel spécialisé en JavaScript, React, Node.js et Python. Je conçois des applications web modernes, performantes et accessibles.",
         "email": "lenyleborgne4@gmail.com",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Chartres",
+            "addressRegion": "Centre-Val de Loire",
             "addressCountry": "FR"
         },
         "sameAs": [
             "https://github.com/lenyLBG",
             "https://www.linkedin.com/in/leny-leborgne-729009362/"
         ],
-        "knowsAbout": ["JavaScript", "React", "Node.js", "Python", "TypeScript", "CSS", "HTML"]
+        "knowsAbout": [
+            "JavaScript", "TypeScript", "React", "Vue.js", "Node.js",
+            "Python", "Django", "PHP", "C#", "HTML5", "CSS3",
+            "MySQL", "SQLite", "Docker", "Git", "SEO", "REST API"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Développeur Web & Logiciel",
+            "occupationLocation": {
+                "@type": "City",
+                "name": "Chartres"
+            },
+            "skills": "JavaScript, React, Node.js, Python, PHP, C#"
+        },
+        "offers": {
+            "@type": "Offer",
+            "description": "Services de développement web, applications web sur mesure, maintenance et consulting digital",
+            "areaServed": "France"
+        }
+    }
+    </script>
+
+    <!-- JSON-LD Schema — WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Leny Leborgne — Portfolio",
+        "url": "https://lenyleborgne.com",
+        "description": "Portfolio professionnel de Leny Leborgne, développeur web et logiciel basé à Chartres.",
+        "inLanguage": "fr-FR",
+        "author": {
+            "@type": "Person",
+            "name": "Leny Leborgne"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lenyleborgne.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- JSON-LD Schema — FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Quels types de projets prenez-vous en charge ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Je travaille sur des projets variés : sites web, applications web, APIs, outils logiciels sur mesure. N'hésitez pas à me contacter pour discuter de votre projet spécifique."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels sont vos délais de réalisation ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Les délais varient selon la complexité du projet. Un site vitrine peut être livré en 1-2 semaines, une application complexe peut prendre plusieurs mois. Chaque projet est évalué individuellement."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Êtes-vous disponible pour des missions en freelance ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, je suis disponible pour des missions freelance. Contactez-moi pour discuter de vos besoins et voir comment je peux vous aider."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment se déroule une collaboration ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "La collaboration débute par une discussion pour comprendre vos besoins, suivie d'un devis détaillé. Après validation, je travaille en itérations avec des points réguliers pour s'assurer que le résultat correspond à vos attentes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Proposez-vous des services de maintenance après livraison ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, je propose des services de maintenance et de support après livraison pour assurer la pérennité et la sécurité de votre projet."
+                }
+            }
+        ]
     }
     </script>
 </head>
@@ -94,6 +210,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#accueil" class="nav-link active">Accueil</a></li>
                 <li><a href="#apropos" class="nav-link">À propos</a></li>
+                <li><a href="#parcours" class="nav-link">Parcours</a></li>
                 <li><a href="#competences" class="nav-link">Compétences</a></li>
                 <li><a href="#projets" class="nav-link">Projets</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -220,7 +337,7 @@
                         <div class="stat-icon"><i class="fas fa-code"></i></div>
                         <div>
                             <span class="stat-num">2+</span>
-                            <span class="stat-text">Années d'expérience</span>
+                            <span class="stat-text">Années d'études</span>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -242,11 +359,86 @@
         </div>
     </section>
 
+    <!-- Parcours Section -->
+    <section id="parcours" class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <p class="section-subtitle">Mon histoire</p>
+                <h2 class="section-title">Parcours</h2>
+            </div>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-card">
+                        <span class="timeline-type">🎓 Formation</span>
+                        <h3>Baccalauréat</h3>
+                        <p class="timeline-org">Lycée Fulbert — Chartres</p>
+                        <p class="timeline-desc">Spécialité : Sciences et Technologies du Management et de la Gestion (STMG)</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Droit</span>
+                            <span class="tag">Management</span>
+                            <span class="tag">Gestion</span>
+                            <span class="tag">Économie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Janvier 2026 - Février 2026</div>
+                    <div class="timeline-card placeholder-card">
+                        <span class="timeline-type">💼 Expérience</span>
+                        <h3>Stage de développement web</h3>
+                        <p class="timeline-org">DDT 28 — Chartres</p>
+                        <p class="timeline-desc">Développement de pages web avec HTML, CSS et JavaScript. Participation à la maintenance d'un site internet existant.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">GitLab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2024 - Présent</div>
+                    <div class="timeline-card placeholder-card">
+                        <span class="timeline-type">💼 Expérience</span>
+                        <h3>BTS SIO — Option SLAM</h3>
+                        <p class="timeline-org">Lycée Fulbert — Chartres</p>
+                        <p class="timeline-desc">BTS Services Informatiques aux Organisations, option Solutions Logicielles et Applications Métiers. Formation aux fondamentaux du développement logiciel, web et de la gestion de projet.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Windows</span>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </section>
+
     <!-- Compétences Section -->
     <section id="competences" class="skills">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">02</span>
+                <span class="section-number">03</span>
                 <p class="section-subtitle">Technologies &amp; outils</p>
                 <h2 class="section-title">Mes Compétences</h2>
             </div>
@@ -259,7 +451,6 @@
                 <span class="tech-pill"><i class="fab fa-python"></i> Python</span>
                 <span class="tech-pill"><i class="fab fa-php"></i> PHP</span>
                 <span class="tech-pill"><i class="fab fa-git-alt"></i> Git</span>
-                <span class="tech-pill"><i class="fab fa-docker"></i> Docker</span>
                 <span class="tech-pill">C#</span>
                 <span class="tech-pill">MySQL</span>
                 <span class="tech-pill">SQLite</span>
@@ -271,7 +462,7 @@
                     <p>Interfaces modernes, responsive et accessibles avec les dernières technologies web.</p>
                     <ul>
                         <li>HTML5 / CSS3 / JavaScript</li>
-                        <li>React / Vue.js / Angular</li>
+                        <li>React</li>
                         <li>Responsive Design</li>
                     </ul>
                 </div>
@@ -280,8 +471,8 @@
                     <h3>Backend</h3>
                     <p>APIs robustes et scalables, gestion de données et logique métier performante.</p>
                     <ul>
-                        <li>Node.js / Express</li>
-                        <li>Python / Django</li>
+                        <li>Node.js</li>
+                        <li>Python</li>
                         <li>PHP</li>
                     </ul>
                 </div>
@@ -292,7 +483,7 @@
                     <ul>
                         <li>MySQL / MariaDB</li>
                         <li>SQLite</li>
-                        <li>Modélisation MCD/MLD</li>
+                        <li>Modélisation UML</li>
                     </ul>
                 </div>
                 <div class="skill-card">
@@ -300,11 +491,71 @@
                     <h3>DevOps &amp; Outils</h3>
                     <p>Workflow moderne avec versioning, containerisation et CI/CD.</p>
                     <ul>
-                        <li>Git / GitHub</li>
-                        <li>Docker</li>
-                        <li>CI/CD Pipelines</li>
+                        <li>Git / GitHub / GitLab</li>
+                        <li>Linux / Windows</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <p class="section-subtitle">Ce que je propose</p>
+                <h2 class="section-title">Services</h2>
+            </div>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Développement Web</h3>
+                    <p>Création de sites web modernes, performants et optimisés SEO. De la landing page au site vitrine complet.</p>
+                    <ul>
+                        <li>Sites vitrines &amp; landing pages</li>
+                        <li>Applications web React / Vue.js</li>
+                        <li>Optimisation SEO &amp; performances</li>
+                    </ul>
+                    <span class="service-price">Tarif sur devis</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>Application Web &amp; API</h3>
+                    <p>Développement d'applications web sur mesure avec backend robuste et API RESTful sécurisées.</p>
+                    <ul>
+                        <li>Gestion de base de données</li>
+                        <li>Authentification &amp; sécurité</li>
+                    </ul>
+                    <span class="service-price">Tarif sur devis</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Maintenance &amp; Support</h3>
+                    <p>Suivi, mise à jour et optimisation de vos projets existants pour garantir performance et sécurité.</p>
+                    <ul>
+                        <li>Correction de bugs</li>
+                        <li>Mises à jour &amp; sécurité</li>
+                        <li>Optimisation des performances</li>
+                    </ul>
+                    <span class="service-price">Tarif mensuel</span>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Consulting &amp; Audit</h3>
+                    <p>Analyse de votre présence digitale, audit technique et recommandations pour améliorer vos performances.</p>
+                    <ul>
+                        <li>Audit SEO &amp; accessibilité</li>
+                        <li>Audit de performances (Core Web Vitals)</li>
+                        <li>Conseil en architecture technique</li>
+                    </ul>
+                    <span class="service-price">Tarif sur devis</span>
+                </div>
+
             </div>
         </div>
     </section>
@@ -313,7 +564,7 @@
     <section id="projets" class="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">03</span>
+                <span class="section-number">05</span>
                 <p class="section-subtitle">Réalisations récentes</p>
                 <h2 class="section-title">Mes Projets</h2>
             </div>
@@ -409,11 +660,85 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <p class="section-subtitle">Questions fréquentes</p>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+            <div class="faq-list" role="list">
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Quels types de projets prenez-vous en charge ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Je travaille sur des projets variés : sites web, applications web, APIs, outils logiciels sur mesure. N'hésitez pas à me contacter pour discuter de votre projet spécifique.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Quels sont vos délais de réalisation ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Les délais varient selon la complexité du projet. Un site vitrine peut être livré en 1-2 semaines, une application complexe peut prendre plusieurs mois. Chaque projet est évalué individuellement.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Êtes-vous disponible pour des missions en freelance ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Oui, je suis disponible pour des missions freelance. Contactez-moi pour discuter de vos besoins et voir comment je peux vous aider.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Comment se déroule une collaboration ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>La collaboration débute par une discussion pour comprendre vos besoins, suivie d'un devis détaillé. Après validation, je travaille en itérations avec des points réguliers pour s'assurer que le résultat correspond à vos attentes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Proposez-vous des services de maintenance après livraison ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Oui, je propose des services de maintenance et de support après livraison pour assurer la pérennité et la sécurité de votre projet.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" role="listitem">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Dans quelles technologies êtes-vous spécialisé ?</span>
+                        <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <p>Je suis spécialisé en JavaScript (React, Node.js), Python, PHP, C# et dans la gestion de bases de données MySQL/SQLite. Je travaille également avec Git pour les workflows modernes.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">04</span>
+                <span class="section-number">07</span>
                 <p class="section-subtitle">Travaillons ensemble</p>
                 <h2 class="section-title">Contact</h2>
             </div>
