@@ -1,4 +1,4 @@
-# SEO Rules
+# SEO Rules - Leny Leborgne (LeBorgne) - Développeur Web & Logiciel
 User-agent: *
 Allow: /
 Allow: /index.html
@@ -9,7 +9,7 @@ Allow: /script.js
 Disallow: /admin
 Disallow: /private
 
-# Sitemap
+# Sitemap - Portfolio de Leny Leborgne
 Sitemap: https://lenyleborgne.com/sitemap.xml
 
 # Crawl delay

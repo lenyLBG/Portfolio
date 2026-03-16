@@ -1,0 +1,11 @@
+# Leny Leborgne - LeBorgne - Redirects pour Netlify
+# Portfolio du développeur web et logiciel Leny Leborgne
+
+# Redirections des URL anciennes (si nécessaire)
+# /old-page   /new-page   301
+
+# Redirection SPA - toutes les routes non trouvées vont à index.html
+/*    /index.html   200
+
+# Redirection HTTPS (si nécessaire)
+https://www.lenyleborgne.com/*   https://lenyleborgne.com/:splat 301!

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap pour Leny Leborgne - Développeur Web & Logiciel - LeBorgne -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Page d'accueil - Leny Leborgne (LeBorgne) -->
     <url>
         <loc>https://lenyleborgne.com/</loc>
         <lastmod>2026-03-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+    <!-- Leny Leborgne - Accueil -->
     <url>
         <loc>https://lenyleborgne.com/#accueil</loc>
-        <lastmod>2026-03-10</lastmod>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    <!-- À propos de Leny Leborgne (LeBorgne) -->
     <url>
         <loc>https://lenyleborgne.com/#apropos</loc>
-        <lastmod>2026-03-10</lastmod>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -36,17 +40,33 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <!-- Services proposés par Leny Leborgne - LeBorgne -->
     <url>
-        <loc>https://lenyleborgne.com/#certifications</loc>
-        <lastmod>2026-03-10</lastmod>
+        <loc>https://lenyleborgne.com/#services</loc>
+        <lastmod>2026-03-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- Projets réalisés par Leny Leborgne -->
+    <url>
+        <loc>https://lenyleborgne.com/#projets</loc>
+        <lastmod>2026-03-16</lastmod>
+        <changefreq>bi-weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <!-- FAQ - Questions fréquentes sur Leny Leborgne (LeBorgne) -->
+    <url>
+        <loc>https://lenyleborgne.com/#faq</loc>
+        <lastmod>2026-03-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    <!-- Contact - Pour contacter Leny Leborgne et LeBorgne -->
     <url>
-        <loc>https://lenyleborgne.com/#process</loc>
-        <lastmod>2026-03-10</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <loc>https://lenyleborgne.com/#contact</loc>
+        <lastmod>2026-03-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
         <loc>https://lenyleborgne.com/#services</loc>

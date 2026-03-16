@@ -1,7 +1,7 @@
 {
-    "name": "Leny Leborgne — Portfolio",
-    "short_name": "Leny Leborgne",
-    "description": "Portfolio professionnel de Leny Leborgne, développeur web et logiciel basé à Chartres.",
+    "name": "Leny Leborgne — Portfolio de Leny - LeBorgne",
+    "short_name": "Leny - LeBorgne",
+    "description": "Portfolio professionnel de Leny Leborgne, développeur web et logiciel freelance basé à Chartres. LeBorgne propose des services de développement web, applications et APIs. Leny Leborgne spécialisé en React, Node.js et Python.",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#060612",

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Leny Leborgne - LeBorgne - Optimisation SEO -->
+<!-- Ce fichier contient des données structurées additionnelles pour les moteurs de recherche -->
+<!-- Portfolio de Leny Leborgne, développeur web et logiciel spécialisé en React, Node.js, Python -->
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Leny Leborgne - Développeur Web & Logiciel - LeBorgne</title>
+    <link>https://lenyleborgne.com</link>
+    <description>Portfolio professionnel de Leny Leborgne, développeur web et logiciel freelance basé à Chartres. LeBorgne propose des services de développement web, applications, APIs et consulting digital. Leny Leborgne spécialisé en React, Node.js, Python, JavaScript et PHP.</description>
+    <language>fr-fr</language>
+    <lastBuildDate>2026-03-16</lastBuildDate>
+    <atom:link href="https://lenyleborgne.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>À propos de Leny Leborgne</title>
+      <link>https://lenyleborgne.com/#apropos</link>
+      <description>Leny Leborgne est un développeur web et logiciel passionné basé à Chartres, en France. LeBorgne transforme des idées en solutions digitales performantes et élégantes avec expertise en React, Node.js et Python.</description>
+      <pubDate>2026-03-16</pubDate>
+    </item>
+    
+    <item>
+      <title>Services de Leny Leborgne - LeBorgne</title>
+      <link>https://lenyleborgne.com/#services</link>
+      <description>Leny Leborgne propose plusieurs services : développement web, applications web sur mesure, APIs RESTful, maintenance et support, consulting et audit digital. LeBorgne freelance à votre service.</description>
+      <pubDate>2026-03-16</pubDate>
+    </item>
+    
+    <item>
+      <title>Projets de Leny Leborgne</title>
+      <link>https://lenyleborgne.com/#projets</link>
+      <description>Découvrez les projets réalisés par Leny Leborgne : FC-Fulbert (optimisation SEO), UI de l'info (challenge Nuit de l'Info), Cluedo Digital (jeu PHP/SQLite). Leny Leborgne showcase ses compétences en développement web et logiciel.</description>
+      <pubDate>2026-03-16</pubDate>
+    </item>
+    
+    <item>
+      <title>Compétences de Leny Leborgne - LeBorgne</title>
+      <link>https://lenyleborgne.com/#competences</link>
+      <description>Leny Leborgne maîtrise : HTML5, CSS3, JavaScript, React, Vue.js, Node.js, Python, Django, PHP, C#, MySQL, SQLite, Git, Docker, SEO. LeBorgne expert en full-stack development.</description>
+      <pubDate>2026-03-16</pubDate>
+    </item>
+    
+    <item>
+      <title>Parcours de Leny Leborgne</title>
+      <link>https://lenyleborgne.com/#parcours</link>
+      <description>Formation : Baccalauréat STMG (2024). Expérience : Stage DDT 28 (Jan-Fév 2026), BTS SIO SLAM (2024-Présent). Leny Leborgne continue sa formation en développement logiciel et web.</description>
+      <pubDate>2026-03-16</pubDate>
+    </item>
+    
+  </channel>
+</rss>
