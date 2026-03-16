@@ -991,7 +991,10 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').catch(() => {});
+                const swUrl = '/sw.js?v=20260316-1';
+                navigator.serviceWorker.register(swUrl, { scope: '/' })
+                    .then(registration => registration.update())
+                    .catch(() => {});
             });
         }
     </script>

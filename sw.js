@@ -1,7 +1,7 @@
 // ==========================================
 // SERVICE WORKER — Leny Leborgne Portfolio
 // ==========================================
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v2';
 const ASSETS = [
     '/',
     '/index.html',
@@ -34,13 +34,18 @@ self.addEventListener('fetch', event => {
     if (event.request.method !== 'GET') return;
     const requestUrl = new URL(event.request.url);
     if (requestUrl.protocol !== 'http:' && requestUrl.protocol !== 'https:') return;
+    if (requestUrl.origin !== self.location.origin) return;
     event.respondWith(
         caches.match(event.request).then(cached => {
             if (cached) return cached;
             return fetch(event.request).then(response => {
                 if (!response || response.status !== 200 || response.type === 'opaque') return response;
                 const clone = response.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+                event.waitUntil(
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, clone))
+                        .catch(() => null)
+                );
                 return response;
             }).catch(() => caches.match('/index.html'));
         })

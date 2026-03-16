@@ -302,7 +302,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 // ==========================================
 console.clear();
 console.log('%c╔════════════════════════════════════════════╗', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
-console.log('%c║  LENY LEBORGNE - Web Developer & Software   ║', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%c║  LENY LEBORGNE - Web Developer & Software  ║', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
 console.log('%c║          LeBorgne - Portfolio- Chartres    ║', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
 console.log('%c╚════════════════════════════════════════════╝', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
 
