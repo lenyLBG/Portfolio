@@ -298,9 +298,40 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 
 // ==========================================
-// CONSOLE EASTER EGG
+// CONSOLE EASTER EGG - SEO OPTIMIZED
 // ==========================================
-console.log('%c{ Leny Leborgne }', 'color: #8b5cf6; font-size: 22px; font-weight: bold; font-family: monospace;');
-console.log('%cDÃ©veloppeur Web & Logiciel â€” lenyleborgne.com', 'color: #94a3b8; font-size: 13px;');
-console.log('%cVous lisez la console ? Contactez-moi ! ðŸ˜„', 'color: #06b6d4; font-size: 13px;');
+console.clear();
+console.log('%c╔════════════════════════════════════════════╗', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%c║  LENY LEBORGNE - Développeur Web & Logiciel║', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%c║          LeBorgne - Freelance - Chartres     ║', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%c╚════════════════════════════════════════════╝', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+
+console.log('%c🚀 Bienvenue sur le portfolio de Leny Leborgne !', 'color: #06b6d4; font-size: 14px; font-weight: bold; margin-top: 10px;');
+console.log('%cDéveloppeur Web & Logiciel Freelance | LeBorgne', 'color: #94a3b8; font-size: 12px;');
+console.log('%clenyleborgne.com', 'color: #06b6d4; font-size: 12px; font-style: italic;');
+
+console.log('\n%c⚡ COMPÉTENCES PRINCIPALES', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%cReact • Node.js • Python • PHP • C# • JavaScript • TypeScript', 'color: #94a3b8; font-size: 11px;');
+console.log('%cMySQL • SQLite • Docker • Git • SEO • REST API', 'color: #94a3b8; font-size: 11px;');
+
+console.log('\n%c📍 SERVICES DE LENY LEBORGNE (LeBorgne)', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%c› Développement Web - Sites modernes et performants', 'color: #94a3b8; font-size: 11px;');
+console.log('%c› Applications Web & API - Solutions sur mesure', 'color: #94a3b8; font-size: 11px;');
+console.log('%c› Maintenance & Support - Suivi technique long terme', 'color: #94a3b8; font-size: 11px;');
+console.log('%c› Consulting & Audit - Optimisation digitale', 'color: #94a3b8; font-size: 11px;');
+
+console.log('\n%c💼 À PROPOS DE LENY LEBORGNE', 'color: #8b5cf6; font-size: 12px; font-weight: bold;');
+console.log('%cLeny Leborgne est un développeur web et logiciel passionné', 'color: #94a3b8; font-size: 11px;');
+console.log('%cbasé à Chartres, France. LeBorgne propose une expertise complète', 'color: #94a3b8; font-size: 11px;');
+console.log('%cen développement full-stack avec une attention particulière à l\'UX.', 'color: #94a3b8; font-size: 11px;');
+
+console.log('\n%c📧 VOUS LISEZ LA CONSOLE ? CONTACTEZ LENY LEBORGNE !', 'color: #06b6d4; font-size: 12px; font-weight: bold;');
+console.log('%c✉️  lenyleborgne4@gmail.com', 'color: #06b6d4; font-size: 11px;');
+console.log('%c🔗 https://lenyleborgne.com', 'color: #06b6d4; font-size: 11px;');
+console.log('%c👤 GitHub: github.com/lenyLBG', 'color: #06b6d4; font-size: 11px;');
+console.log('%c💼 LinkedIn: linkedin.com/in/leny-leborgne-729009362/', 'color: #06b6d4; font-size: 11px;');
+
+console.log('\n%c═══════════════════════════════════════════', 'color: #8b5cf6; font-size: 11px; font-weight: bold;');
+console.log('%cLeny Leborgne (LeBorgne) - Portfolio 2026', 'color: #8b5cf6; font-size: 11px; font-weight: bold;');
+console.log('%c═══════════════════════════════════════════', 'color: #8b5cf6; font-size: 11px; font-weight: bold;');
 
