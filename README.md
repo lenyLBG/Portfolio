@@ -1,12 +1,12 @@
-# Portfolio — Leny Leborgne
+# Mon Portfolio
 
-> **Portfolio professionnel de Leny Leborgne** - Développeur Web & Logiciel | LeBorgne
+> **Mon portfolio professionnel** - Développeur Web & Logiciel
 > 
-> Découvrez le portfolio de **Leny Leborgne**, développeur web et logiciel spécialisé en **React**, **Node.js**, **Python** et **PHP**. LeBorgne propose des solutions digitales innovantes et performantes.
+> Je suis développeur web et logiciel spécialisé en **React**, **Node.js**, **Python** et **PHP**. Je propose des solutions digitales innovantes et performantes.
 >
 > 🌐 Disponible sur [lenyleborgne.com](https://lenyleborgne.com)
 > 
-> **Mots-clés** : Leny Leborgne, LeBorgne, développeur web Chartres, développeur logiciel freelance, React, Node.js, Python
+> **Mots-clés** : Leny Leborgne, développeur web Chartres, développeur logiciel freelance, React, Node.js, Python
 
 ## 🎨 Design
 
