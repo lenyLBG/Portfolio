@@ -1,53 +1,20 @@
 // ==========================================
-// SERVICE WORKER — Leny Leborgne Portfolio
+// SERVICE WORKER — DISABLED
 // ==========================================
-const CACHE_NAME = 'portfolio-v2';
-const ASSETS = [
-    '/',
-    '/index.html',
-    '/styles.css',
-    '/script.js',
-    '/logo.png',
-    '/manifest.json',
-    'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-];
-
-// Install — mise en cache des assets statiques
+// Tous les caches ont été désactivés
+// Chaque chargement de page récupère les fichiers depuis le serveur
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())
-    );
+    event.waitUntil(self.skipWaiting());
 });
 
-// Activate — nettoyage des anciens caches
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(keys =>
-            Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-        ).then(() => self.clients.claim())
+        caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))))
+            .then(() => self.clients.claim())
     );
 });
 
-// Fetch — stratégie Cache First avec fallback réseau
 self.addEventListener('fetch', event => {
-    if (event.request.method !== 'GET') return;
-    const requestUrl = new URL(event.request.url);
-    if (requestUrl.protocol !== 'http:' && requestUrl.protocol !== 'https:') return;
-    if (requestUrl.origin !== self.location.origin) return;
-    event.respondWith(
-        caches.match(event.request).then(cached => {
-            if (cached) return cached;
-            return fetch(event.request).then(response => {
-                if (!response || response.status !== 200 || response.type === 'opaque') return response;
-                const clone = response.clone();
-                event.waitUntil(
-                    caches.open(CACHE_NAME)
-                        .then(cache => cache.put(event.request, clone))
-                        .catch(() => null)
-                );
-                return response;
-            }).catch(() => caches.match('/index.html'));
-        })
-    );
+    // Pas de cache, récupérer directement du serveur
+    event.respondWith(fetch(event.request));
 });
