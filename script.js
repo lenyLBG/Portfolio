@@ -3,9 +3,9 @@
    ═══════════════════════════════════════════════════════════════ */
 
 // EmailJS Configuration
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY_HERE';
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID_HERE';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+const EMAILJS_PUBLIC_KEY = 'MiWfB4Nu-DTa4AEJm';
+const EMAILJS_SERVICE_ID = 'service_w0032l8';
+const EMAILJS_TEMPLATE_ID = 'template_rljs4lm';
 
 // Initialize EmailJS
 emailjs.init(EMAILJS_PUBLIC_KEY);
