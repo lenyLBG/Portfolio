@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Background -->
+  <rect width="256" height="256" fill="#0A0E21"/>
+  
+  <!-- Outer glow circle -->
+  <circle cx="128" cy="128" r="120" fill="none" stroke="#00FFD1" stroke-width="2" opacity="0.3"/>
+  
+  <!-- NEXUS Text -->
+  <text x="128" y="145" font-family="'Courier New', monospace" font-size="80" font-weight="bold" fill="#00FFD1" text-anchor="middle" letter-spacing="3" opacity="0.9">N</text>
+  
+  <!-- Corner accents -->
+  <line x1="20" y1="20" x2="60" y2="20" stroke="#FF006E" stroke-width="3"/>
+  <line x1="20" y1="20" x2="20" y2="60" stroke="#FF006E" stroke-width="3"/>
+  
+  <line x1="196" y1="20" x2="236" y2="20" stroke="#FFBE0B" stroke-width="3"/>
+  <line x1="236" y1="20" x2="236" y2="60" stroke="#FFBE0B" stroke-width="3"/>
+  
+  <line x1="20" y1="196" x2="20" y2="236" stroke="#00FFD1" stroke-width="3"/>
+  <line x1="20" y1="236" x2="60" y2="236" stroke="#00FFD1" stroke-width="3"/>
+  
+  <line x1="236" y1="196" x2="236" y2="236" stroke="#8338EC" stroke-width="3"/>
+  <line x1="196" y1="236" x2="236" y2="236" stroke="#8338EC" stroke-width="3"/>
+</svg>
