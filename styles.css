@@ -265,8 +265,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 60px;
+}
+
+.init-section .section-title {
+    flex: 0 1 auto;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin-bottom: 0;
 }
 
 .section-content {
@@ -275,6 +283,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
+    flex: 1;
 }
 
 .init-screen {

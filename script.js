@@ -221,39 +221,7 @@ function createRipple(e) {
 // ═══════════════════════════════════════════════════════════════
 
 function setupGlitches() {
-    // Random glitch text effect
-    const titles = document.querySelectorAll('.section-title');
-    
-    titles.forEach(title => {
-        title.addEventListener('mouseenter', () => {
-            glitchText(title);
-        });
-    });
-}
-
-function glitchText(element) {
-    const original = element.textContent;
-    const chars = '!@#$%^&*()_+-={}[]|:;<>?,./';
-    
-    let iteration = 0;
-    const interval = setInterval(() => {
-        element.textContent = original
-            .split('')
-            .map((char, index) => {
-                if (Math.random() < 0.5) {
-                    return chars[Math.floor(Math.random() * chars.length)];
-                }
-                return char;
-            })
-            .join('');
-        
-        iteration++;
-        
-        if (iteration > 5) {
-            element.textContent = original;
-            clearInterval(interval);
-        }
-    }, 50);
+    // Glitch effects disabled
 }
 
 // ═══════════════════════════════════════════════════════════════
