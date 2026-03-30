@@ -2,8 +2,13 @@
    NEXUS v2.0 - JavaScript Engine
    ═══════════════════════════════════════════════════════════════ */
 
-// Backend Configuration
-const API_BASE_URL = window.location.origin; // Uses current domain
+// EmailJS Configuration
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY_HERE';
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID_HERE';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+
+// Initialize EmailJS
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 // ═══════════════════════════════════════════════════════════════
 // SYSTEM INITIALIZATION
@@ -89,7 +94,7 @@ function updateActiveNode(node) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// CONTACT FORM HANDLER - Backend Integration
+// CONTACT FORM HANDLER - EmailJS Integration
 // ═══════════════════════════════════════════════════════════════
 
 function setupContactForm() {
@@ -103,55 +108,35 @@ function setupContactForm() {
         const submitBtn = form.querySelector('.send-btn');
         const originalText = submitBtn.textContent;
         
-        // Get form data
-        const formData = {
-            user_name: form.querySelector('input[name="user_name"]').value,
-            user_email: form.querySelector('input[name="user_email"]').value,
-            subject: form.querySelector('input[name="subject"]').value,
-            message: form.querySelector('textarea[name="message"]').value
-        };
-        
         // Show loading state
         submitBtn.textContent = 'TRANSMITTING...';
         submitBtn.disabled = true;
         
         try {
-            console.log('📧 Envoi du formulaire...');
+            await emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                form
+            );
             
-            const response = await fetch(`${API_BASE_URL}/api/send-email`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            // Success state
+            submitBtn.textContent = '✓ SIGNAL SENT';
+            submitBtn.style.borderColor = '#00FFD1';
+            submitBtn.style.color = '#00FFD1';
             
-            const result = await response.json();
+            // Reset form
+            form.reset();
             
-            if (response.ok && result.success) {
-                // Success state
-                submitBtn.textContent = '✓ SIGNAL SENT';
-                submitBtn.style.borderColor = '#00FFD1';
-                submitBtn.style.color = '#00FFD1';
-                
-                console.log('✅ Email envoyé avec succès!');
-                
-                // Reset form
-                form.reset();
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.borderColor = '';
-                    submitBtn.style.color = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            } else {
-                throw new Error(result.error || 'Erreur lors de l\'envoi');
-            }
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.borderColor = '';
+                submitBtn.style.color = '';
+                submitBtn.disabled = false;
+            }, 3000);
             
         } catch (error) {
-            console.error('❌ Erreur lors de l\'envoi:', error);
+            console.error('Error sending form:', error);
             
             submitBtn.textContent = '✗ TRANSMISSION FAILED';
             submitBtn.style.borderColor = '#FF006E';
